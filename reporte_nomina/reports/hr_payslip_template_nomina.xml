@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report id="hr_payslip_report_nomina"
+            model="hr.payslip"
+            string="Nómina"
+            menu="True"
+            report_type="qweb-pdf"
+            name="reporte_nomina.hr_payslip_nomina_report"
+            file="reporte_nomina.hr_payslip_nomina_report"
+            paperformat="reporte_nomina.paper_format"/>
+
+</odoo>

@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_contract_nomina">
+        <xpath expr="//div[@class='page']" position="attributes">
+            <attribute name="style">font-family: 'Source Sans Pro', sans-serif;</attribute>
+        </xpath>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="page" style="font-size:18px;">
+                    <div>
+                        <center>
+                            <strong>
+                                <p style="text-align:center;font-size:16px;font-family:Source Sans Pro;text-align:center;">
+                                    CONTRATO INDIVIDUAL DE TRABAJO POR TIEMPO INDETERMINADO CON PERIODO DE PRUEBA DE
+                                    HASTA 90 DIAS
+                                </p>
+                            </strong>
+                        </center>
+                    </div>
+                    <br/>
+                    <div>
+                        <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">CONTRATO INDIVIDUAL DE
+                            TRABAJO POR TIEMPO INDETERMINADO, QUE CELEBRAN POR UNA PARTE, REPRESENTADA POR CONDUCTO DEL
+                            C.
+                            <span style="text-transform: uppercase;">
+                                <strong>
+                                    <t t-esc="o.hr_contract_nomina.c_partner_id.name"/>
+                                </strong>
+                            </span>
+                            , EN
+                            SU CARÁCTER DE APODERADO LEGAL A QUIENES EN LO SUCESIVO Y PARA EFECTOS DEL PRESENTE CONTRATO
+                            SE LES DENOMINARÁ COMO “LA EMPRESA” Y POR LA OTRA
+                            <span style="text-transform: uppercase;">
+                                <strong>
+                                    <t t-esc="o.employee_id.name.upper()"/>
+                                </strong>
+                            </span>
+                            A QUIEN EN LO SUCESIVO SE LE DENOMINARA COMO “EL
+                            TRABAJADOR”, AL TENOR DE LAS SIGUIENTES DECLARACIONES Y CLAUSULAS:
+                        </p>
+                    </div>
+                    <center>
+                        <p>
+                            <strong>DECLARACIONES:</strong>
+                        </p>
+                    </center>
+                    <p style="text-align:justify;font-size:16px;font-family:Source Sans Pro;">
+                        I.- Declara
+                        <strong>“LA EMPRESA”:</strong>
+                        <span style="text-transform:uppercase;">
+                            <strong>
+                                <t t-esc="o.hr_contract_nomina.the_company_id"/>
+                            </strong>
+                        </span>
+                        <br/>
+                        <span style="padding-left: 20px;">a) Ser una persona moral debidamente constituida conforme a
+                            las Leyes Mexicanas, con domicilio
+                            ubicado en:
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.hr_contract_nomina.street"/>
+                                </strong>
+                            </span>
+                            con Registro Federal del Contribuyente:
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.hr_contract_nomina.rfc"/>
+                                </strong>
+                            </span>
+                        </span>
+                        <br/>
+                        <span style="padding-left:20px;">b) Que cuenta para la consecución de su objeto social, con los
+                            elementos necesarios para cumplir con sus obligaciones legales frente a sus trabajadores.
+                        </span>
+                    </p>
+                    <p style="text-align:justify; font-size:16px;font-family:Source Sans Pro;">
+                        II.- Declara <strong>“EL TRABAJADOR”</strong> con numero de empleado
+                        <strong>
+                            <t t-esc="o.employee_id.no_nomina"/>
+                        </strong>
+                        <br/>
+                        <span style="padding-left:20px;">a) Llamarse
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.employee_id.name"/>,
+                                </strong>
+                            </span>
+                            de nacionalidad
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.employee_id.country_id.name"/>,
+                                </strong>
+                            </span>
+                            nacido el
+                            <span>
+                                <t t-if="o.employee_id.birthday">
+                                <strong>
+                                    <t t-esc="o.employee_id.birthday.strftime('%d de %B de %Y')"/>,
+                                </strong>
+                                </t>
+                            </span>
+                            tener
+                            <span>
+                                <strong>
+                                    <t t-esc="o.employee_id.edad"/>
+                                </strong>
+                            </span>
+                            años de edad, sexo
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="dict(o.employee_id.fields_get(allfields=['gender'])['gender']['selection'])[o.employee_id.gender]"/>
+                                </strong>
+                            </span>
+                            estado civil
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="dict(o.employee_id.fields_get(allfields=['marital'])['marital']['selection'])[o.employee_id.marital]"/>
+                                </strong>
+                            </span>
+                            y con domicilio en
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.hr_contract_nomina.street"/>,
+                                </strong>
+                            </span>
+                            con Registro Federal de Contribuyentes
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.hr_contract_nomina.rfc"/>
+                                </strong>
+                            </span>
+                            y Clave Única de Registro de Población
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.employee_id.curp_employee"/>.
+                                </strong>
+                            </span>
+                        </span>
+                        <br/>
+                        <span style="padding-left:20px;">b) Tener los conocimientos, aptitudes y experiencia necesarios
+                            para prestar los servicios requeridos por
+                            <strong>“LA EMPRESA”.</strong>
+                        </span>
+                        <br/>
+                        <span style="padding-left:20px;">c) Para efectos del pago de salarios y prestaciones devengadas
+                            y
+                            no cobradas en caso de muerte o desaparición derivada de un acto delincuencial, conforme a
+                            lo dispuesto en el artículo 501 de la Ley federal del trabajo, <strong>“EL TRABAJADOR”
+                            </strong> designa como
+                            beneficiario a:
+                        </span>
+                    </p>
+                    <div class="row">
+                        <t t-set="format_percentage" t-value="lambda value: '{:.2%}'.format(value)"/>
+                        <table class="table table-sm table-bordered" style="margin-top:30px;">
+                            <thead style="background-color:#295EAC;color:white;font-size:16px;font-family:Source Sans Pro;">
+                                <th>Nombre del beneficiario</th>
+                                <th>Parentesco</th>
+                                <th>Numero de telefono</th>
+                                <th>Porcentaje</th>
+                            </thead>
+                            <tbody style="font-size:16px;font-family:Source Sans Pro;">
+                                <tr t-foreach="o.hr_contract_nomina.beneficiaries_ids" t-as="l">
+                                    <td>
+                                        <t t-esc="l.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.relationship"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.phone"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="format_percentage(l.percentage)"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify !important;">
+                        <span>III.-Ambas partes declaran que cuentan con la debida capacidad legal para celebrar el
+                            presente contrato,
+                            y que es su voluntad aceptar como condiciones las siguientes:
+                        </span>
+                    </p>
+                    <center>
+                        <strong>CLÁUSULAS</strong>
+                    </center>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>PRIMERA.-</strong>El presente Contrato Individual de Trabajo se celebra por<strong> TIEMPO INDETERMINADO
+                            CON UN PERIODO DE PRUEBA DE 90 DÍAS,
+                        </strong> con fundamento en lo dispuesto por el artículo 35 de la
+                            Ley Federal del Trabajo, sólo podrá ser modificado, suspendido, rescindido o terminado
+                            en los casos y con los requisitos señalados en la Ley Federal del Trabajo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>SEGUNDA.-</strong>Ambas partes acuerdan que el presente contrato de trabajo por <strong> TIEMPO
+                            INDETERMINADO CON UN PERIODO DE PRUEBA DE 90 DÍAS
+                        </strong> tendrá una vigencia a partir de
+                            <t t-if="o.date_start">
+                            <strong><t t-esc="o.date_start.strftime('%d de %B de %Y')"/>,
+                            </strong></t>
+                            respetando su antigüedad a partir de la misma.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>TERCERA.-“EL TRABAJADOR”</strong>conviene en prestar sus servicios personales y subordinados a
+                            <strong>“LA EMPRESA"</strong>
+                            en el puesto de
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.job_id.name"/>
+                                </strong>
+                            </span>
+                            , desempeñando las funciones
+                            propias del puesto siendo estas enunciativas mas no limitativas por exigirlo así la
+                            naturaleza del trabajo. Así mismo, <strong>“EL TRABAJADOR”</strong>conviene
+                            expresamente en
+                            que desempeñará
+                            cualquier otra actividad que le indique <strong>“LA EMPRESA”</strong>, de acuerdo con
+                            las
+                            necesidades del
+                            servicio, sus conocimientos, habilidades, experiencia, capacitación, y grado de
+                            confianza
+                            depositada, siempre y cuando esta sea conexa a las actividades encomendadas al puesto
+                            asignado en el párrafo que antecede.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>CUARTA.- “EL TRABAJADOR”,</strong>
+                            desempeñará sus servicios bajo la dirección y dependencia del
+                            <strong>“LA EMPRESA”,</strong>
+                            en el domicilio que este le indique, quedando obligado a observar todas las
+                            instrucciones, políticas, reglamentos, manuales que establezca o puedan establecerse en
+                            el
+                            futuro, y a vigilar que estos sean cumplidos por el personal a su cargo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>QUINTA.-</strong>
+                            Las partes convienen en que la jornada de trabajo será la máxima legal descrita
+                            en el <strong>ANEXO 01</strong> conforme a lo estipulado en el artículo 60 de la ley
+                            federal
+                            del trabajo, los
+                            cuales podrán modificarse con previo aviso por escrito al trabajador.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>SEXTA.-</strong>
+                            La duración de la jornada de trabajo será acorde a lo establecido en la ley
+                            federal del trabajo, estableciéndose como descanso el día <strong>DOMINGO</strong> de
+                            cada
+                            semana, día de
+                            descanso que se pagara integro siempre y cuando el trabajador no incurra en faltas
+                            injustificadas en el periodo de seis días de trabajo que enuncia el artículo 69 de la
+                            Ley
+                            Federal de Trabajo, en el entendido que de incurrir el trabajador en faltas
+                            injustificadas
+                            el pago de su descanso se reducirá y se pagará en proporción a los días efectivamente
+                            laborados de conformidad con el artículo 72 de la Ley Federal del Trabajo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>Lo anterior en la inteligencia, que de acuerdo a las necesidades de trabajo y a la
+                            rotación de los turnos que en determinado momento hubiera necesidad de llevar a cabo,
+                            desde
+                            este momento <strong>“EL TRABAJADOR”</strong> manifiesta su conformidad y autorización
+                            para
+                            que su jornada de
+                            labores sea modificada siempre y cuando se encuentre dentro de la jornada legal que
+                            establece el artículo 60 de la Ley Federal del trabajo y se le respeten en todo momento
+                            su
+                            categoría y salario.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>SÉPTIMA.-“EL TRABAJADOR”</strong> únicamente podrá laborar tiempo extraordinario previa
+                            autorización de <strong>“LA EMPRESA”</strong> y mediante orden por escrito, en el que
+                            señalara el día y los
+                            horarios en el cual se desempeñara el mismo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>OCTAVA.- “EL TRABAJADOR”</strong>
+                            se obliga a sujetarse a cualquier tipo de control de asistencia
+                            que al efecto señale y recibirá de
+                            <strong>“LA EMPRESA”.</strong>
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>NOVENA.-</strong>
+                            Las partes convienen en que <strong>“EL TRABAJADOR”</strong> percibirá de <strong>“LA
+                            EMPRESA”
+                        </strong> el pago de
+                            <strong>
+                                <t t-esc="'%.2f'% o.contract_payment"/>
+                                <t t-esc="o.currency_id.symbol"/>
+                            </strong>
+                            , por concepto de salario diario,
+                            mismo que será pagado mediante moneda de curso legal de manera QUINCENAL en días y horas
+                            hábiles previa firma del recibo de salario correspondiente, donde se incluirá el pago
+                            del
+                            séptimo día y demás prestaciones a que tenga derecho.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA.-“EL TRABAJADOR”</strong>
+                            está de acuerdo en que sus salarios le sean cubiertos por <strong>“LA
+                            EMPRESA”
+                        </strong> mediante pago en efectivo en el domicilio de <strong>“LA EMPRESA”</strong> o
+                            transferencia
+                            electrónica a una cuenta bancaria de su propiedad, misma que se compromete a
+                            proporcionar a
+                            <strong>“LA EMPRESA”</strong>
+                            a más tardar en la fecha de pago, sirviendo el comprobante de la transferencia
+                            electrónica hecha por <strong>“LA EMPRESA”</strong> como recibo de pago del salario.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA PRIMERA.-</strong>
+                            EL <strong>“TRABAJADOR”</strong> y el <strong>“LA EMPRESA”</strong> establecen que los
+                            únicos días en que
+                            <strong>“EL TRABAJADOR”</strong>
+                            no prestará sus servicios para la empresa, son los días de descanso
+                            obligatorio establecidos en el artículo 74 de la Ley Federal del Trabajo. En caso de
+                            laborar
+                            por mutuo acuerdo se pagarán conforme al articulo 75 de la ley federal del trabajo
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA SEGUNDA.-</strong>
+                            Cuando el<strong>“TRABAJADOR”</strong> haya cumplido el año de servicios prestados,
+                            tendrá derecho a un periodo de vacaciones de 12 días por lo menos, mismos que aumentaran
+                            2
+                            días por cada año de servicios prestados de acuerdo al artículo 78 y 81 de la ley
+                            federal
+                            del trabajo, las cuales no podrán compensarse con una remuneración. Deberán de
+                            concederse a <strong>“EL TRABAJADOR”</strong>
+                            el periodo de vacaciones dentro de los 6 meses posteriores al cumplimiento
+                            conforme al acuerdo mutuo con “LA EMPRESA”, conforme al artículo 78 y 81 de la ley
+                            federal
+                            del trabajo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>“El TRABAJADOR”</strong>
+                            recibirá un 25% de prima sobre el salario que le corresponda por los días de vacaciones.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA TERCERA.- “EL TRABAJADOR”</strong>
+                            percibirá un aguinaldo anual, que deberá pagarse antes
+                            del veinte de diciembre, equivalente a quince días de salario por lo menos y cuando no
+                            haya
+                            cumplido el año de servicios tendrá derecho a que se le pague la parte proporcional al
+                            tiempo trabajado de conformidad con lo dispuesto en el artículo 87 de la ley federal del
+                            trabajo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA CUARTA.-</strong>
+                            Las partes se obligan a cumplir con los planes y programas de
+                            capacitación, adiestramiento y productividad que se establezca en el centro de trabajo
+                            de
+                            acuerdo con lo establecido en el capítulo III BIS artículo153- A y demás relativos y
+                            aplicables de la Ley Federal del Trabajo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA QUINTA.- “EL TRABAJADOR”</strong>
+                            se obliga expresamente a no divulgar, revelar, disponer o
+                            hacer uso con fines no autorizados o ajenos a <strong>“LA EMPRESA”</strong> por sí, por
+                            tercera persona o por
+                            cualquier otro medio, la información propiedad de <strong>“LA EMPRESA”</strong>, en
+                            cualquier forma en que
+                            tal información se represente, respecto de sus actividades, sean industriales,
+                            comerciales o
+                            administrativas, relacionadas con los negocios, políticas, sistemas, procesos, métodos,
+                            técnicas, especificaciones sobre maquinaria y equipo, inversiones, estadísticas, planes
+                            de
+                            ventas y desarrollo y demás secretos o información confidencial de <strong>“LA EMPRESA”
+                        </strong> y, en
+                            general, cualquier dato que <strong>“EL TRABAJADOR”</strong> conozca o llegue a ser de
+                            su
+                            conocimiento con
+                            motivo de la prestación de los servicios contratados.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>“EL TRABAJADOR”</strong>
+                            se obliga a no adquirir interés alguno, participar o intervenir en los
+                            asuntos de empresas competidoras, proveedora o consumidoras de los productos o servicios
+                            de <strong>“LA EMPRESA”</strong> sin la autorización previa y por escrito de <strong>“LA EMPRESA”</strong>, si <strong>
+                            “EL TRABAJADOR”</strong> no cumple con esta disposición, quedará sujeto a la responsabilidad civil y penal que cause
+                            a <strong>“LA EMPRESA”.</strong>
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA SEPTIMA.- “EL TRABAJADOR”</strong>
+                            está especialmente obligado a respetar y realizar las
+                            instrucciones y prácticas destinadas a prevenir riesgos de trabajo, bajo pena de las
+                            sanciones que determinen las leyes.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA OCTAVA.- “EL TRABAJADOR”</strong>
+                            tendrá derecho a gozar de un periodo comprendido de 30
+                            minutos de acuerdo al programa de descanso que la <strong>“EMPRESA”</strong> comunicará
+                            cada
+                            mes, para
+                            descansar o disfrutar sus alimentos dentro de las instalaciones, los cuales serán
+                            computados
+                            como tiempo efectivo de la jornada de trabajo.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>DECIMA NOVENA. -</strong>
+                            Las inasistencias a las labores por accidente o enfermedad, solo podrán
+                            ser justificadas por el trabajador, mediante la exhibición del certificado de
+                            incapacidad
+                            expedido por un doctor acreditado, el cual deberá ser entregado a la <strong>“EMPRESA”,
+                        </strong> el primer
+                            día en que aquél se reincorpore a sus labores. Lo anterior sin perjuicio de dar el aviso
+                            correspondiente el mismo día en que se produzca la falta.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>VIGESIMA. - “EL TRABAJADOR”</strong>
+                            se obliga a avisar a la <strong>“LA EMPRESA”</strong> de cualquier cambio de
+                            domicilio, entendiéndose que, de no hacerlo, cualquier notificación se le hará en el
+                            último
+                            domicilio que tenga registrado en <strong>"LA EMPRESA”,</strong> sometiéndose ambas
+                            partes
+                            desde a hora al a
+                            jurisdicción de los tribunales laborales de esta ciudad.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span><strong>VIGESIMA PRIMERA.-“EL TRABAJADOR”</strong>, se obliga a observar y respetar las disposiciones
+                            contenidas en el presente contrato y en el Reglamento Interior de Trabajo en su caso.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>
+                            <strong>VIGESIMA SEGUNDA.-</strong>
+                            Cualquier otra situación no prevista en el presente contrato, las
+                            partes nos sujetaremos a las disposiciones de nuestra Constitución Política, la ley
+                            Federal del Trabajo y demás leyes y reglamentos que emanen de la misma.
+                        </span>
+                    </p>
+                    <p style="font-size:16px;font-family:Source Sans Pro;text-align:justify;">
+                        <span>Leído por ambas partes y un testigo por cada uno el presente contrato y sabedores de
+                            las
+                            obligaciones que contraen, lo ratifican y firman en la ciudad de
+                            <span style="text-transform:uppercase;">
+                                <strong>
+                                    <t t-esc="o.hr_contract_nomina.city"/>
+                                </strong>
+                            </span>
+                            a PALENQUE, CHIAPAS.
+                        </span>
+                    </p>
+                    <br/>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div style="width:50%;display:inline-block;float:left;">
+                            <center>___________________________</center>
+                            <center>
+                                <b style="font-family:Source Sans Pro;line-height:1 cm;">POR "LA EMPRESA"</b>
+                            </center>
+                        </div>
+                        <div style="width:50%;display:inline-block;float:right;">
+                            <center>___________________________</center>
+                            <center>
+                                <b style="font-family:Source Sans Pro;font-size:16px;line-height:1 cm;">"EL TRABAJADOR"
+                                </b>
+                            </center>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div style="width:50%;display:inline-block;float:left;">
+                            <center>___________________________</center>
+                            <center>
+                                <b style="font-family:Source Sans Pro;line-height:1 cm;">POR "LA EMPRESA"</b>
+                            </center>
+                        </div>
+                        <div style="width:50%;display:inline-block;float:right;">
+                            <center>___________________________</center>
+                            <center>
+                                <b style="font-family:Source Sans Pro;font-size:16px;line-height:1 cm;">“TESTIGO POR EL
+                                    TRABAJADOR”
+                                </b>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

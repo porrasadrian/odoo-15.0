@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_contract_action_inherit_form" model="ir.actions.act_window">
+        <field name="name">Plantilla para contratos de nómina</field>
+        <field name="res_model">hr.contract.nomina</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <menuitem id="hr_contract_view_form" parent="hr.menu_human_resources_configuration" name="Plantilla de contratos" sequence="101" action="hr_contract_action_inherit_form"/>
+</odoo>

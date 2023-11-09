@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hr_payslip_nomina_report">
+        <xpath expr="//div[@class='page']" position="attributes">
+            <attribute name="style">font-family: 'Source Sans Pro', sans-serif;</attribute>
+        </xpath>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="page" style="font-size:18px;">
+                    <div class="row">
+                        <!-- INICIA LOGO DE LA EMPRESA -->
+                        <!--<div class="col-3">
+                            <img t-if="o.company_id.logo"
+                                 t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)"
+                                 style="max-height: 180px;max-width: 180px;"/>
+                        </div>-->
+                        <!-- TERMINA LOGO DE LA EMPRESA -->
+                        <!-- EMPIEZA DATOS DEL EMISOR -->
+                        <div class="col-12">
+                            <center style="font-size:14px !important;font-family:Source Sans Pro;width:100%;text-align:center;">
+                                <strong>
+                                    <p>RECIBO DE NOMINA</p>
+                                </strong>
+                            </center>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row" name="info_row">
+                        <div class="col-12">
+                            <table style="width:100% !important;border-width:1px;border-color: #B3B9BE;border-style: solid;">
+                                <tr>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:10% !important;text-align:left;">
+                                        <strong>
+                                            <span>Empresa:</span>
+                                        </strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-esc="o.company_database.name"/>
+                                        </span>
+                                    </td>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:7% !important;text-align:left;">
+                                        <strong>
+                                            <span>No. Nómina:</span>
+                                        </strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-esc="o.no_nomina"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <table style="background-color:white;width:100% !important;border-width:1px;border-color: #B3B9BE;border-style: solid;">
+                                <tr>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:10% !important;text-align:left;">
+                                        <strong>Nombre:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-esc="o.employee_id.name"/>
+                                        </span>
+                                    </td>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:7% !important;text-align:left;">
+                                        <strong>CURP:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-esc="o.employee_id.curp_employee"/>
+                                        </span>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <table style="background-color:white;width:100% !important;border-width:1px;border-color: #B3B9BE;border-style: solid;">
+                                <tr>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:5%;text-align:left;">
+                                        <strong>Departamento:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-esc="o.employee_id.department_id.name"/>
+                                        </span>
+                                    </td>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:13% !important;text-align:left;">
+                                        <strong>Salario Diario:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span t-esc="o.contract_id.wage"
+                                              t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </td>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:14% !important;text-align:left;">
+                                        <strong>Fecha de pago:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-if="o.fecha_pago">
+                                                <t t-esc="dict(o.fields_get(allfields=['fecha_pago'])['fecha_pago']['selection'])[o.fecha_pago]"/>
+                                            </t>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <table style="background-color:white;width:100% !important;border-width:1px;border-color: #B3B9BE;border-style: solid;">
+                                <tr>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:9%;text-align:left;">
+                                        <strong>Puesto:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-esc="o.employee_id.job_title"/>
+                                        </span>
+                                    </td>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:15%;text-align:left;">
+                                        <strong>Dias laborados:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-foreach="o.worked_days_line_ids" t-as="worked_day">
+                                                <t t-if="worked_day.code == 'WORK100'">
+                                                    <t t-esc="int(worked_day.number_of_days)"/> Días
+                                                </t>
+                                            </t>
+                                        </span>
+                                    </td>
+                                    <td style="padding:5px;font-size:14px;font-family:Source Sans Pro;color:white;background-color:#295EAC;width:7% !important;text-align:left;">
+                                        <strong>Periodo:</strong>
+                                    </td>
+                                    <td style="font-size:14px;padding:5px;font-family:Source Sans Pro;">
+                                        <span>
+                                            <t t-if="o.date_from and o.date_to">
+                                                Del
+                                                <t t-esc="o.date_from.strftime('%d de %B de %Y')"/>
+                                                al
+                                                <t t-esc="o.date_to.strftime('%d de %B de %Y')"/>
+                                            </t>
+
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Total de percepciones -->
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <table class="table table-sm ">
+                                    <thead>
+                                        <tr>
+                                            <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                Percepciones
+                                            </td>
+                                            <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                Total
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                            t-as="line">
+                                            <t t-if="line.category_id.code == 'PER'">
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-field="line.name"/>
+                                                </td>
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-esc="line.total"
+                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.contract_id.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                        <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                            t-as="line">
+                                            <t t-if="line.category_id.code == 'GROSS'">
+                                                <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    Total Percepciones
+                                                </td>
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-esc="line.total"
+                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.contract_id.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- Total de percepciones -->
+                            </td>
+                            <td>
+                                <!-- Total  Deducciones -->
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                Deduciones
+                                            </td>
+                                            <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                Total
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                            t-as="line">
+                                            <t t-if="line.category_id.code == 'DED'">
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-field="line.name"/>
+                                                </td>
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-esc="line.total"
+                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.contract_id.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                        <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                            t-as="line">
+                                            <t t-if="line.category_id.code == 'TOTALDED'">
+                                                <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    Total Deducciones
+                                                </td>
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-esc="line.total"
+                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.contract_id.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                        <!-- Total  Deducciones -->
+                                        <!--- Total de pago en nomina -->
+                                        <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                            t-as="line">
+                                            <t t-if="line.category_id.code == 'NET'">
+                                                <td style="background-color:#295EAC;color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    Total de pago en nómina
+                                                </td>
+                                                <td style="background-color:white;font-size:14px;font-family:Source Sans Pro;">
+                                                    <span t-esc="line.total"
+                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.contract_id.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                        <!-- Total de pago en nomina -->
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <center>
+                                <p style="text-align:center;font-size:14px;font-family:Source Sans Pro;color:black;width:30%;padding:5px;">
+                                    FIRMA DE CONFORMIDAD
+                                </p>
+                                <br/>
+                                <br/>
+                                <p>_____________________________________</p>
+                            </center>
+                            <br/>
+                            <center>
+                                <p style="position:relative;text-align:justify;font-size:12px;font-family:Source Sans Pro;width:50%;">
+                                    RECIBÍ DE LA CANTIDAD INDICADA EN EL RUBRO
+                                    INFERIOR COMO NETO A PAGAR POR CONCEPTO DE TODAS LAS PERCEPCIONES QUE SE DESGLOSAN
+                                    EN EL PRESENTE RECIBO, POR MIS SERVICIOS PRESTADOS, SIN QUE SE ME ADEUDE NINGUNA
+                                    OTRA CANTIDAD POR NINGÚN OTRO CONCEPTO, NO RESERVÁNDOME NINGUNA ACCIÓN NI DERECHO
+                                    QUE EJERCITAR EN CONTRA DE LA EMPRESA RESPECTO A LOS PAGOS ANTES MENCIONADOS.
+
+                                </p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

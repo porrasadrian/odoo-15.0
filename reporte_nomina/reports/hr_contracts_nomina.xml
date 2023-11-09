@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report id="hr_contract_nomina"
+            model="hr.contract"
+            string="Imprimir Contrato de Empleado"
+            menu="True"
+            report_type="qweb-pdf"
+            name="reporte_nomina.report_contract_nomina"
+            file="reporte_nomina.report_contract_nomina"
+            paperformat="reporte_nomina.contrato_nomina"/>
+
+</odoo>

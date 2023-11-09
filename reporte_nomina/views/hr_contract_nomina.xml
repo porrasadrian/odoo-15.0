@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_contract_nomina_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.nomina</field>
+        <field name="model">hr.contract.nomina</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="c_partner_id"/>
+                            <field name="the_company_id"/>
+                            <field name="city"/>
+                        </group>
+                        <group>
+                            <field name="street"/>
+                            <field name="rfc"/>
+                        </group>
+                    </group>
+                    <field name="beneficiaries_ids">
+                        <tree editable="bottom">
+                            <control>
+                                <create name="add_product_control" string="Agregar a un beneficiario"/>
+                            </control>
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="relationship"/>
+                            <field name="phone"/>
+                            <field name="percentage" widget="percentage"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="hr_contract_nomina_view_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.nomina</field>
+        <field name="model">hr.contract.nomina</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="c_partner_id" optional="show"/>
+                <field name="the_company_id" optional="show"/>
+                <field name="city" optional="show"/>
+                <field name="street" optional="show"/>
+                <field name="rfc" optional="show"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

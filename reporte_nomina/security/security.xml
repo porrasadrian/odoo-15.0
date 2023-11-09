@@ -1,0 +1,11 @@
+<odoo>
+     <record id="module_category" model="ir.module.category">
+        <field name="name">Access admin</field>
+    </record>
+    <!--GRUPO DE SEGURIDAD -->
+    <record id="group_report_contract" model="res.groups">
+        <field name="name">Imprimir contrato de nomina</field>
+        <field name="category_id" ref="module_category"/>
+        <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+</odoo>

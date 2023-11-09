@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_contract_nomina,accesos_a_contrato_de_nomina_del_empleado,model_hr_contract_nomina,reporte_nomina.group_report_contract,1,1,1,1
+access_beneficiarios_nomina,accesos_a_beneficiarios_nomina,model_beneficiaries_payroll,reporte_nomina.group_report_contract,1,1,1,1
